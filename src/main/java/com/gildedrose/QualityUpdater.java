@@ -32,7 +32,6 @@ public class QualityUpdater {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
 
-                    if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
                             incrementQuality();
                         }
@@ -40,7 +39,6 @@ public class QualityUpdater {
                         if (item.sellIn < 6) {
                             incrementQuality();
                         }
-                    }
                 }
             } else {
                 if (item.quality > 0) {
