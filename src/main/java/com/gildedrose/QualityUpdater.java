@@ -20,15 +20,11 @@ public class QualityUpdater {
 
                     if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                         if (item.sellIn < 11) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                            incrementQuality();
                         }
 
                         if (item.sellIn < 6) {
-                            if (item.quality < 50) {
-                                item.quality = item.quality + 1;
-                            }
+                            incrementQuality();
                         }
                     }
                 }
@@ -46,15 +42,11 @@ public class QualityUpdater {
 
                 if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     if (item.sellIn < 11) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                        incrementQuality();
                     }
 
                     if (item.sellIn < 6) {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
+                        incrementQuality();
                     }
                 }
             }
@@ -67,9 +59,7 @@ public class QualityUpdater {
 
         if (item.sellIn < 0) {
             if (item.name.equals("Aged Brie")) {
-                if (item.quality < 50) {
-                    item.quality = item.quality + 1;
-                }
+                incrementQuality();
             } else {
                 if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                     item.quality = item.quality - item.quality;
@@ -82,6 +72,12 @@ public class QualityUpdater {
                     }
                 }
             }
+        }
+    }
+
+    private void incrementQuality() {
+        if (item.quality < 50) {
+            item.quality = item.quality + 1;
         }
     }
 }
