@@ -1,11 +1,18 @@
 package com.gildedrose;
 
 public class QualityUpdater {
+
+    private final Item item;
+
     public static QualityUpdater clasify(Item item) {
-        return null;
+        return new QualityUpdater(item);
     }
 
-    void updateQualityOfItem(Item item) {
+    public QualityUpdater(Item item) {
+        this.item = item;
+    }
+
+    void updateQualityOfItem() {
         if (!item.name.equals("Aged Brie")
                 && !item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
             if (item.quality > 0) {
