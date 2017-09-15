@@ -13,7 +13,21 @@ public class QualityUpdater {
     }
 
     void updateQualityOfItem() {
-        if (!item.name.equals("Aged Brie"))
+        if (item.name.equals("Aged Brie")) {
+            if (item.quality < 50) {
+                item.quality = item.quality + 1;
+
+                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
+                    if (item.sellIn < 11) {
+                        incrementQuality();
+                    }
+
+                    if (item.sellIn < 6) {
+                        incrementQuality();
+                    }
+                }
+            }
+        } else {
             if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
@@ -33,20 +47,6 @@ public class QualityUpdater {
                     if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
                     } else {
                         item.quality = item.quality - 1;
-                    }
-                }
-            }
-        else {
-            if (item.quality < 50) {
-                item.quality = item.quality + 1;
-
-                if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
-                    if (item.sellIn < 11) {
-                        incrementQuality();
-                    }
-
-                    if (item.sellIn < 6) {
-                        incrementQuality();
                     }
                 }
             }
