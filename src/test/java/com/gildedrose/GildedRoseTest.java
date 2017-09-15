@@ -7,11 +7,11 @@ import org.junit.Test;
 public class GildedRoseTest {
 
     @Test
-    public void foo() {
+    public void test_updateQuality_oneItemWithDummyData_nameiSWhatIvePuttedOnTheConstructor() {
         Item[] items = new Item[] { new Item("foo", 0, 0) };
         GildedRose app = new GildedRose(items);
         app.updateQuality();
-        assertEquals("fixme", app.items[0].name);
+        assertEquals("foo", app.items[0].name);
     }
 
 }

@@ -1,3 +1,7 @@
+# wifi: justdigital
+# pass: jdrules2017
+
+
 # Especificaciones de la Rosa Dorada (Gilded Rose)
 
 Bienvenido al equipo de **Gilded Rose**.
