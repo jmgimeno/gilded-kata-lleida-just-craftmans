@@ -7,9 +7,13 @@ class GildedRose {
         this.items = items;
     }
 
+    public static QualityUpdater clasify(Item item) {
+        return new QualityUpdater(item);
+    }
+
     public void updateQuality() {
         for (Item item : items) {
-            QualityUpdater updater = QualityUpdater.clasify(item);
+            QualityUpdater updater = clasify(item);
             updater.updateQualityOfItem();
         }
     }
@@ -17,10 +21,6 @@ class GildedRose {
     public static class QualityUpdater {
 
         private final Item item;
-
-        public static QualityUpdater clasify(Item item) {
-            return new QualityUpdater(item);
-        }
 
         public QualityUpdater(Item item) {
             this.item = item;
