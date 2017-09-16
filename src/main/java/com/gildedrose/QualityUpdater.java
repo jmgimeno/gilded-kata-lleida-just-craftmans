@@ -15,14 +15,18 @@ public class QualityUpdater {
     void updateQualityOfItem() {
         adjustQuality();
 
-        adjustSellIn();
+        updateSellIn();
 
-        if (item.sellIn < 0) {
-            reAdjustQuality();
+        if (itemHasExpired()) {
+            adjustQualityForExpiredItems();
         }
     }
 
-    private void reAdjustQuality() {
+    private boolean itemHasExpired() {
+        return item.sellIn < 0;
+    }
+
+    private void adjustQualityForExpiredItems() {
         if (item.name.equals("Aged Brie")) {
             incrementQuality();
         } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -37,7 +41,7 @@ public class QualityUpdater {
         }
     }
 
-    private void adjustSellIn() {
+    private void updateSellIn() {
         if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
         } else {
             item.sellIn = item.sellIn - 1;
