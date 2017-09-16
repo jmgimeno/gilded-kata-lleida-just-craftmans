@@ -12,6 +12,8 @@ class GildedRose {
             return new BrieUpdater(item);
         else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
             return new PassUpdater(item);
+        else if (item.name.equals("Sulfuras, Hand of Ragnaros"))
+            return new SulfurasUpdater(item);
         else
             return new QualityUpdater(item);
     }
@@ -46,30 +48,17 @@ class GildedRose {
         }
 
         protected void adjustQualityForExpiredItems() {
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                if (item.quality > 0) {
-                    return;
-                }
-                item.quality = item.quality - 1;
-            } else if (item.quality > 0) {
+            if (item.quality > 0) {
                 item.quality = item.quality - 1;
             }
         }
 
         protected void updateSellIn() {
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-            } else {
                 item.sellIn = item.sellIn - 1;
-            }
         }
 
         protected void adjustQuality() {
-            if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
-                if (item.quality > 0) {
-                } else {
-                    item.quality = item.quality - 1;
-                }
-            } else if (item.quality > 0) {
+            if (item.quality > 0) {
                 item.quality = item.quality - 1;
             }
         }
@@ -125,6 +114,28 @@ class GildedRose {
                 if (item.sellIn < 6) {
                     incrementQuality();
                 }
+            }
+        }
+    }
+
+    private static class SulfurasUpdater extends QualityUpdater {
+        public SulfurasUpdater(Item item) {
+            super(item);
+        }
+
+        protected void adjustQualityForExpiredItems() {
+            if (item.quality <= 0) {
+                item.quality = item.quality - 1;
+            }
+        }
+
+        protected void updateSellIn() {
+
+        }
+
+        protected void adjustQuality() {
+            if (item.quality <= 0) {
+                item.quality = item.quality - 1;
             }
         }
     }
