@@ -3,11 +3,18 @@ package com.gildedrose;
 class GildedRose {
     Item[] items;
 
-    public GildedRose(Item[] items) {
+    GildedRose(Item[] items) {
         this.items = items;
     }
 
-    public static QualityUpdater clasify(Item item) {
+    void updateQuality() {
+        for (Item item : items) {
+            QualityUpdater updater = clasify(item);
+            updater.updateQualityOfItem();
+        }
+    }
+
+    private static QualityUpdater clasify(Item item) {
         if (item.name.equals("Aged Brie"))
             return new BrieUpdater(item);
         else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert"))
@@ -18,18 +25,11 @@ class GildedRose {
             return new QualityUpdater(item);
     }
 
-    public void updateQuality() {
-        for (Item item : items) {
-            QualityUpdater updater = clasify(item);
-            updater.updateQualityOfItem();
-        }
-    }
+    private static class QualityUpdater {
 
-    public static class QualityUpdater {
+        final Item item;
 
-        protected final Item item;
-
-        public QualityUpdater(Item item) {
+        QualityUpdater(Item item) {
             this.item = item;
         }
 
@@ -43,26 +43,20 @@ class GildedRose {
             }
         }
 
-        private boolean itemHasExpired() {
-            return item.sellIn < 0;
-        }
-
         protected void adjustQualityForExpiredItems() {
             decrementQuality();
         }
 
-        private void decrementQuality() {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
-        }
-
         protected void updateSellIn() {
-                item.sellIn = item.sellIn - 1;
+            item.sellIn = item.sellIn - 1;
         }
 
         protected void adjustQuality() {
             decrementQuality();
+        }
+
+        private boolean itemHasExpired() {
+            return item.sellIn < 0;
         }
 
         protected void incrementQuality() {
@@ -70,11 +64,17 @@ class GildedRose {
                 item.quality = item.quality + 1;
             }
         }
+
+        private void decrementQuality() {
+            if (item.quality > 0) {
+                item.quality = item.quality - 1;
+            }
+        }
     }
 
 
     private static class BrieUpdater extends QualityUpdater {
-        public BrieUpdater(Item item) {
+        BrieUpdater(Item item) {
             super(item);
         }
 
@@ -92,13 +92,12 @@ class GildedRose {
     }
 
     private static class PassUpdater extends QualityUpdater {
-        public PassUpdater(Item item) {
+        PassUpdater(Item item) {
             super(item);
         }
 
         protected void adjustQualityForExpiredItems() {
             item.quality = 0;
-
         }
 
         protected void updateSellIn() {
@@ -121,7 +120,7 @@ class GildedRose {
     }
 
     private static class SulfurasUpdater extends QualityUpdater {
-        public SulfurasUpdater(Item item) {
+        SulfurasUpdater(Item item) {
             super(item);
         }
 
