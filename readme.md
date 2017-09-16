@@ -1,3 +1,9 @@
+El repositorio contene tres ramas de desarrollo:
+
+* master: la que contiene el código de Xavi
+* first: una rama que quedó colgada en un intento que hice que no continué
+* second: la rama que contiene "mi solución" aunque quedan cosillas por hacer (la primera, buscar mejores nombres). Es la **rama por defecto** del repositorio.
+
 # Especificaciones de la Rosa Dorada (Gilded Rose)
 
 Bienvenido al equipo de **Gilded Rose**.
