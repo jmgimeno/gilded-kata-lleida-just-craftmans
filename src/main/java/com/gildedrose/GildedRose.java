@@ -43,7 +43,7 @@ class GildedRose {
             }
         }
 
-        protected void adjustQualityForExpiredItems() {
+        protected void adjustQuality() {
             decrementQuality();
         }
 
@@ -51,7 +51,7 @@ class GildedRose {
             item.sellIn = item.sellIn - 1;
         }
 
-        protected void adjustQuality() {
+        protected void adjustQualityForExpiredItems() {
             decrementQuality();
         }
 
@@ -78,15 +78,11 @@ class GildedRose {
             super(item);
         }
 
-        protected void adjustQualityForExpiredItems() {
+        protected void adjustQuality() {
             incrementQuality();
         }
 
-        protected void updateSellIn() {
-            item.sellIn = item.sellIn - 1;
-        }
-
-        protected void adjustQuality() {
+        protected void adjustQualityForExpiredItems() {
             incrementQuality();
         }
     }
@@ -94,14 +90,6 @@ class GildedRose {
     private static class PassUpdater extends QualityUpdater {
         PassUpdater(Item item) {
             super(item);
-        }
-
-        protected void adjustQualityForExpiredItems() {
-            item.quality = 0;
-        }
-
-        protected void updateSellIn() {
-            item.sellIn = item.sellIn - 1;
         }
 
         protected void adjustQuality() {
@@ -116,6 +104,10 @@ class GildedRose {
                     incrementQuality();
                 }
             }
+        }
+
+        protected void adjustQualityForExpiredItems() {
+            item.quality = 0;
         }
     }
 
