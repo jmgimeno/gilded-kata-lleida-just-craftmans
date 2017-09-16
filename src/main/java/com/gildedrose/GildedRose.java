@@ -126,9 +126,7 @@ class GildedRose {
         }
 
         protected void adjustQualityForExpiredItems() {
-            if (item.quality <= 0) {
-                item.quality = item.quality - 1;
-            }
+
         }
 
         protected void updateSellIn() {
@@ -136,9 +134,7 @@ class GildedRose {
         }
 
         protected void adjustQuality() {
-            if (item.quality <= 0) {
-                item.quality = item.quality - 1;
-            }
+
         }
     }
 }
