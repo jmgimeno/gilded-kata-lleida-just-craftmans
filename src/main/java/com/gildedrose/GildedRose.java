@@ -20,7 +20,7 @@ class GildedRose {
 
     public static class QualityUpdater {
 
-        private final Item item;
+        protected final Item item;
 
         public QualityUpdater(Item item) {
             this.item = item;
@@ -40,7 +40,7 @@ class GildedRose {
             return item.sellIn < 0;
         }
 
-        private void adjustQualityForExpiredItems() {
+        protected void adjustQualityForExpiredItems() {
             if (item.name.equals("Aged Brie")) {
                 incrementQuality();
             } else if (item.name.equals("Backstage passes to a TAFKAL80ETC concert")) {
@@ -55,14 +55,14 @@ class GildedRose {
             }
         }
 
-        private void updateSellIn() {
+        protected void updateSellIn() {
             if (item.name.equals("Sulfuras, Hand of Ragnaros")) {
             } else {
                 item.sellIn = item.sellIn - 1;
             }
         }
 
-        private void adjustQuality() {
+        protected void adjustQuality() {
             if (item.name.equals("Aged Brie")) {
                 if (item.quality < 50) {
                     item.quality = item.quality + 1;
@@ -89,7 +89,7 @@ class GildedRose {
             }
         }
 
-        private void incrementQuality() {
+        protected void incrementQuality() {
             if (item.quality < 50) {
                 item.quality = item.quality + 1;
             }
