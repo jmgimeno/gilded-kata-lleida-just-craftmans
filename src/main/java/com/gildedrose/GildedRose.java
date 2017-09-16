@@ -48,6 +48,10 @@ class GildedRose {
         }
 
         protected void adjustQualityForExpiredItems() {
+            decrementQuality();
+        }
+
+        private void decrementQuality() {
             if (item.quality > 0) {
                 item.quality = item.quality - 1;
             }
@@ -58,9 +62,7 @@ class GildedRose {
         }
 
         protected void adjustQuality() {
-            if (item.quality > 0) {
-                item.quality = item.quality - 1;
-            }
+            decrementQuality();
         }
 
         protected void incrementQuality() {
